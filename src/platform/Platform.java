@@ -1,4 +1,5 @@
 package platform;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.Random;
 import static java.lang.String.format;
@@ -24,7 +25,6 @@ public class Platform {
         Random random = new Random();
         userdata [] udata=new userdata[MAX_WORKER];//用户表
         userdata [] newudata=new userdata[MAX_WORKER];
-
         System.out.println("initworker: ");
         for (int i=0;i<MAX_WORKER;i++){
             udata[i]= new userdata();
@@ -50,6 +50,7 @@ public class Platform {
 
             for(int i=0;i<MAX_SLCT;i++){
                 newudata[selected[i]]= new userdata();
+                udata[i].startTime = new Date();
                 newudata[selected[i]] = Incent.mechanism(udata[i]);//调用机制算法
                 System.out.println("r:"+r+" id:"+newudata[selected[i]].id);//输出每一轮更新信息
                 System.out.println("reputation: "+newudata[selected[i]].reputation);
